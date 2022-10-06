@@ -1,0 +1,280 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar{
+  width: 100%;
+  height: 50px;
+  background-color: white;
+}
+
+html {
+  height: 100%;
+}
+ 
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* height: 100%; */
+  overflow: hidden;
+  background-color: #333333;
+}
+
+.outer-container{
+  width: calc(100vw - 20px);
+  height: calc(100vh - 70px);
+  margin: 10px;
+  background-size:50px 50px;
+  border: 2px solid white;
+  overflow: hidden;
+  border-radius: 10px ;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+#drawingboard{
+  cursor: grab;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: lightgrey;
+  background-image: 
+  linear-gradient(0deg, transparent 9%, 
+          rgba(255, 255, 255, .2) 10%, rgba(255, 255, 255, .2) 12%, transparent 13%, transparent 29%, 
+          rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 31%, transparent 32%, transparent 49%, 
+          rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 51%, transparent 52%, transparent 69%, 
+          rgba(255, 255, 255, .1) 70%, rgba(255, 255, 255, .1) 71%, transparent 72%, transparent 89%,
+          rgba(255, 255, 255, .1) 90%, rgba(255, 255, 255, .1) 91%, transparent 92%, transparent),
+  linear-gradient(90deg, transparent 9%, 
+          rgba(255, 255, 255, .2) 10%, rgba(255, 255, 255, .2) 12%, transparent 13%, transparent 29%, 
+          rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 31%, transparent 32%, transparent 49%, 
+          rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 51%, transparent 52%, transparent 69%, 
+          rgba(255, 255, 255, .1) 70%, rgba(255, 255, 255, .1) 71%, transparent 72%, transparent 89%,
+          rgba(255, 255, 255, .1) 90%, rgba(255, 255, 255, .1) 91%, transparent 92%, transparent);
+  
+   width: 1000px;
+   height: 600px;
+   /* margin: 10px; */
+  background-size:50px 50px;
+  /* position: absolute; */ 
+  /* border: 2px solid white; */
+  position: relative;
+}
+
+
+.shape {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  /* overflow: hidden; */
+}
+
+/* .shape::before{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+} */
+
+.shape .resizers{ 
+  width: 100%;
+  height: 100%;  
+  /* background: black;   */
+  box-sizing: border-box;  
+}
+
+/* Shapes */
+.square {
+    background-color: black;
+}
+
+.circle{
+    background-color: black;
+    border-radius: 50%;
+}
+
+/* .image{
+    width: 100%;
+    height: 100%;
+} */
+
+.shape:hover {
+    /* outline: 3px solid #4286f4; */
+    cursor: move;
+}
+.dblclicked{
+  outline: 3px solid red; 
+  z-index: 100;
+}
+
+#img-container{ 
+  pointer-events: none;
+  width: 100%;
+  height: 100%; 
+  position: absolute;
+  overflow: hidden; 
+}
+
+#img-Crop{
+  /* object-fit: fill;    */
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* clip: rect(0px,70px,100px,0px); */
+  /* clip: none; */
+  /* resize: both */
+}
+
+ 
+
+.selected{
+  outline: 3px solid #4286f4;
+  /* z-index: 100; */
+}
+
+.shape .resizers .resizer{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /*magic to turn square into circle*/
+  background: white;
+  border: 3px solid #4286f4;
+  position: absolute;
+  visibility: hidden;
+}
+
+.shape:hover .resizers .resizer{ 
+  visibility: visible; 
+}
+
+.shape .resizers .resizer.top-left {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  cursor: nwse-resize; /*resizer cursor*/  
+}
+.shape .resizers .resizer.top-right {
+  right: -5px;
+  top: -5px;
+  cursor: nesw-resize;
+  position: absolute;
+}
+.shape .resizers .resizer.bottom-left {
+  left: -5px;
+  bottom: -5px;
+  cursor: nesw-resize;
+  position: absolute;
+}
+.shape .resizers .resizer.bottom-right {
+  right: -5px;
+  bottom: -5px;
+  cursor: nwse-resize;
+  position: absolute;
+
+}
+
+
+
+/* EDITOR */
+
+.editor{
+  display: inline-block;
+  border-radius: 10px;
+  position: absolute;
+  width:240px; 
+  /* height: 80px; */
+  overflow: hidden;
+  background-color: white;
+  top: 70px; 
+  right: 20px;  
+  border: 2px solid #333333;  
+  align-items: center; 
+  padding: 3px; 
+  text-align: center; 
+}
+
+#expand-button{
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  margin-left: 10px;
+  font-size: 30px;
+}
+
+ 
+.edit-input{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 0;
+}
+
+#font-size{ 
+  height: 20px; 
+}
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload { 
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#color-picker{ 
+  height: 30px;
+  background-color: none;
+  border: none;
+  outline: none; 
+}
+
+.add-button{ 
+  width: 50px;
+  height: 50px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  margin: 3px;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif; 
+}
+
+#add-src{
+  cursor: pointer;
+}
+
+.add-button:hover{
+  background-color: #333333;
+  color: white;
+}
+
+.edit-button{
+  width: 50px;
+  height: 50px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  margin: 3px;
+  cursor: pointer;
+  font-size: 25px; 
+}
+
+ 
+
+.edit-button:hover{
+  background-color: #333333;
+  color: white;
+}
+
+.fa-angle-up{
+  font-size: 25px; 
+}
+
+ 
